@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/QueSalvada-Android.iml" filepath="$PROJECT_DIR$/QueSalvada-Android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/QueSalvadaFeatureModule/QueSalvadaFeatureModule.iml" filepath="$PROJECT_DIR$/QueSalvadaFeatureModule/QueSalvadaFeatureModule.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/base/base.iml" filepath="$PROJECT_DIR$/base/base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/instantapp/instantapp.iml" filepath="$PROJECT_DIR$/instantapp/instantapp.iml" />
+    </modules>
+  </component>
+</project>
