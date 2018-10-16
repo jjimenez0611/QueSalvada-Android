@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
 
-//apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-kapt'
 
 //apply plugin: 'org.jetbrains.kotlin.kapt'
 
@@ -25,7 +25,7 @@ android {
         }
     }
 
-    kapt { generateStubs = true }
+    //kapt { generateStubs = true }
 }
 
 dependencies {
