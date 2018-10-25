@@ -6,6 +6,9 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <!--This line is to apply transitions between activities-->
+        <item name="android:windowContentTransitions">true</item>
     </style>
 
 </resources>

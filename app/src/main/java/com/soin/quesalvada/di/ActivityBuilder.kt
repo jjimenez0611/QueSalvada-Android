@@ -1,6 +1,7 @@
 package com.soin.quesalvada.di
 
-import com.soin.quesalvada.MainActivity
+import com.soin.quesalvada.ui.activities.LoginActivity
+import com.soin.quesalvada.ui.activities.SplashActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -11,6 +12,9 @@ import dagger.android.ContributesAndroidInjector
 abstract class ActivityBuilder {
 
     @ContributesAndroidInjector()
-    abstract fun bindMainActivity(): MainActivity
+    abstract fun bindSplashActivity(): SplashActivity
+
+    @ContributesAndroidInjector()
+    abstract fun bindLoginActivity(): LoginActivity
 
 }
