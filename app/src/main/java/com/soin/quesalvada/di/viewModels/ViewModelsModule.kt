@@ -1,46 +1,19 @@
 package com.soin.quesalvada.di.viewModels
 
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.soin.quesalvada.viewModel.LoginViewModel
 import dagger.Binds
 import dagger.Module
+import dagger.multibindings.IntoMap
 
 @Module
 abstract class ViewModelsModule {
 
-    /*   @Binds
-       @IntoMap
-       @ViewModelKey(AnnouncementListViewModel::class)
-       abstract fun bindAnnouncementViewModel(announcementListViewModel: AnnouncementListViewModel): ViewModel
-
-       @Binds
-       @IntoMap
-       @ViewModelKey(ChurchListViewModel::class)
-       abstract fun bindChurchMapViewModel(churchListViewModel: ChurchListViewModel): ViewModel
-
-       @Binds
-       @IntoMap
-       @ViewModelKey(ParishViewModel::class)
-       abstract fun bindParishViewModel(parishViewModel: ParishViewModel): ViewModel
-
-       @Binds
-       @IntoMap
-       @ViewModelKey(MapViewModel::class)
-       abstract fun bindMapViewModel(mapViewModel: MapViewModel) : ViewModel
-
-       @Binds
-       @IntoMap
-       @ViewModelKey(ChurchViewModel::class)
-       abstract fun bindDetailMapViewModel(mapViewModel: ChurchViewModel): ViewModel
-
-       @Binds
-       @IntoMap
-       @ViewModelKey(EucharistListViewModel::class)
-       abstract fun bindEucharistViewModel(eucharistListViewModel: EucharistListViewModel): ViewModel*/
-
-    /*  @Binds
+      @Binds
       @IntoMap
-      @ViewModelKey(DataViewModel::class)
-      abstract fun bindDataViewModel(dataViewModel: DataViewModel): ViewModel*/
+      @ViewModelKey(LoginViewModel::class)
+      abstract fun bindLoginViewModel(dataViewModel: LoginViewModel): ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory

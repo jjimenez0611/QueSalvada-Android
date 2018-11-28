@@ -2,97 +2,116 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/progress"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    android:focusable="true">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imgAppLogo"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
+        android:contentDescription="@string/app_logo"
         android:src="@drawable/octopus"
         android:transitionName="app_logo_transition"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/app_logo"/>
+        app:layout_constraintTop_toTopOf="parent"/>
 
-    <EditText
-        android:id="@+id/editText6"
-        android:layout_width="wrap_content"
-        android:layout_height="67dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/editText7"
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtInputUser"
+        style="@style/textInputLayoutRoundedCorners"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtInputPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/guideline2"/>
+        app:layout_constraintTop_toBottomOf="@+id/guideline2">
 
-    <EditText
-        android:id="@+id/editText7"
-        android:layout_width="wrap_content"
-        android:layout_height="68dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
-        app:layout_constraintEnd_toEndOf="@+id/editText6"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/editText6"
-        app:layout_constraintTop_toBottomOf="@+id/editText6"/>
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etUser"
+            style="@style/editTextStyle"
+            android:ems="10"
+            android:inputType="textEmailAddress"/>
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtInputPassword"
+        style="@style/textInputLayoutRoundedCorners"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintBottom_toTopOf="@+id/button6"
-        app:layout_constraintEnd_toEndOf="@+id/editText7"
+        app:layout_constraintBottom_toTopOf="@+id/btnLogin"
+        app:layout_constraintEnd_toEndOf="@+id/txtInputUser"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/editText7"
-        app:layout_constraintTop_toBottomOf="@+id/editText7"/>
+        app:layout_constraintStart_toStartOf="@+id/txtInputUser"
+        app:layout_constraintTop_toBottomOf="@+id/txtInputUser">
 
-    <Button
-        android:id="@+id/button5"
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etPassword"
+            style="@style/editTextStyle"
+            android:ems="10"
+            android:inputType="textPassword"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnLogin"
+        style="@style/loginBtnStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/lb_login"
+        app:layout_constraintBottom_toTopOf="@+id/btnLoginOpt2"
+        app:layout_constraintEnd_toEndOf="@+id/txtInputPassword"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/txtInputPassword"
+        app:layout_constraintTop_toBottomOf="@+id/txtInputPassword"/>
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btnLoginOpt1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="@+id/button6"
-        app:layout_constraintEnd_toStartOf="@+id/button6"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@mipmap/ic_google"
+        app:layout_constraintBottom_toBottomOf="@+id/btnLoginOpt2"
+        app:layout_constraintEnd_toStartOf="@+id/btnLoginOpt2"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button6"/>
+        app:layout_constraintTop_toTopOf="@+id/btnLoginOpt2"/>
 
-    <Button
-        android:id="@+id/button6"
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btnLoginOpt2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@mipmap/ic_facebook"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button7"
+        app:layout_constraintEnd_toStartOf="@+id/btnLoginOpt3"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button5"
-        app:layout_constraintTop_toBottomOf="@+id/button2"/>
+        app:layout_constraintStart_toEndOf="@+id/btnLoginOpt1"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin"/>
 
-    <Button
-        android:id="@+id/button7"
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btnLoginOpt3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="@+id/button6"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@mipmap/ic_twitter"
+        app:layout_constraintBottom_toBottomOf="@+id/btnLoginOpt2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button6"
-        app:layout_constraintTop_toTopOf="@+id/button6"/>
+        app:layout_constraintStart_toEndOf="@+id/btnLoginOpt2"
+        app:layout_constraintTop_toTopOf="@+id/btnLoginOpt2"/>
 
     <TextView
         android:id="@+id/textView"
@@ -100,12 +119,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:text="TextView"
+        android:text="@string/app_name"
+        android:textAlignment="center"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgAppLogo"/>
+        app:layout_constraintTop_toBottomOf="@+id/imgAppLogo"
+        tools:text="TextView"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
@@ -113,6 +135,18 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.3"/>
+
+    <ProgressBar
+        android:id="@+id/progressCircular"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="@color/colorPrimary"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

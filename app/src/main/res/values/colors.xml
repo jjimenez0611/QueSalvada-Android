@@ -10,4 +10,8 @@
     <color name="colorPrimaryText">#ffffff</color>
     <color name="colorSecondaryText">#000000</color>
 
+    <color name="colorWhiteTransparent">#1AFFFFFF</color>
+    <color name="colorGrayTransparent">#1A9B9B9B</color>
+    <color name="colorPrimaryTransparent">#B30d47a1</color>
+
 </resources>
