@@ -1,6 +1,7 @@
 package com.soin.quesalvada.ui.activities
 
 import android.content.Intent
+import android.util.Log
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.animation.Animation
@@ -8,6 +9,11 @@ import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.facebook.CallbackManager
+import com.facebook.FacebookCallback
+import com.facebook.FacebookException
+import com.facebook.login.LoginManager
+import com.facebook.login.LoginResult
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.common.api.ApiException
@@ -22,6 +28,7 @@ import com.soin.quesalvada.utils.ValidateFieldsUtils.validateEditTextFieldField
 import com.soin.quesalvada.viewModel.LoginViewModel
 import kotlinx.android.synthetic.main.activity_login.*
 import java.lang.ref.WeakReference
+import java.util.*
 
 class LoginActivity : BaseActivity() {
 
@@ -31,6 +38,8 @@ class LoginActivity : BaseActivity() {
 
     private lateinit var fadeInAnimation: Animation
     private lateinit var bounceAnimation: Animation
+
+    private lateinit var _callbackManager: CallbackManager
 
 
     override fun initializeViewModel() {
@@ -43,6 +52,7 @@ class LoginActivity : BaseActivity() {
 
     override fun observeLiveData() {
         checkUserIsLogin()
+        initCallbackManager()
     }
 
     private fun checkUserIsLogin() {
@@ -71,6 +81,10 @@ class LoginActivity : BaseActivity() {
 
         btnLoginOpt1?.setOnClickListener {
             loginWithGoogle(WeakReference(this))
+        }
+
+        btnLoginOpt2?.setOnClickListener{
+            LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("email", "public_profile", "user_birthday"))
         }
     }
 
@@ -116,6 +130,8 @@ class LoginActivity : BaseActivity() {
 
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+
+        _callbackManager.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == LOGIN_GOOGLE_REQUEST_CODE) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
@@ -192,5 +208,26 @@ class LoginActivity : BaseActivity() {
         btnLoginOpt2?.startAnimation(bounceAnimation)
         btnLoginOpt3?.startAnimation(bounceAnimation)
 
+    }
+
+    private fun initCallbackManager(){
+
+        _callbackManager = CallbackManager.Factory.create()
+        LoginManager.getInstance().registerCallback(_callbackManager, object : FacebookCallback<LoginResult> {
+            override fun onSuccess(loginResult: LoginResult) {
+                Log.d("", "facebook:onSuccess:$loginResult")
+                //handleFacebookAccessToken(loginResult.accessToken)
+            }
+
+            override fun onCancel() {
+                Log.d("", "facebook:onCancel")
+                // ...
+            }
+
+            override fun onError(error: FacebookException) {
+                Log.d("", "facebook:onError", error)
+                // ...
+            }
+        })
     }
 }

@@ -3,4 +3,7 @@
     <string name="app_logo">Logo Aplicación</string>
     <string name="lb_login">Ingresar</string>
     <string name="lb_required_field">Campo requerido</string>
+
+    <string name="facebook_app_id">197842191124769</string>
+    <string name="fb_login_protocol_scheme">fb197842191124769</string>
 </resources>
