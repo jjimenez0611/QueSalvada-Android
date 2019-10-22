@@ -23,6 +23,8 @@
 
         <activity android:name=".ui.activities.LoginActivity"/>
 
+        <activity android:name=".ui.activities.DashboardActivity"/>
+
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id"/>

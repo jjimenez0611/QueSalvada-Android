@@ -4,27 +4,25 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.tasks.Task
-import com.google.firebase.auth.AuthResult
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.GoogleAuthProvider
 import com.soin.quesalvada.common.Resource
 import javax.inject.Inject
+import android.widget.Toast
+import androidx.annotation.NonNull
+import com.facebook.AccessToken
+import com.google.firebase.auth.*
+import com.twitter.sdk.android.core.TwitterSession
 
 
 class FirebaseAuthService @Inject constructor() {
 
     private val firebaseAuthentication: FirebaseAuth = FirebaseAuth.getInstance()
 
-    fun createUserWithEmailAndPasswordToFireBase(email: String, password: String): LiveData<Resource<FirebaseUser>> {
+    fun createUserWithEmailAndPasswordToFireBase(email: String, password: String): MutableLiveData<Resource<FirebaseUser>> {
 
         val data = MutableLiveData<Resource<FirebaseUser>>()
-
-
         firebaseAuthentication.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task: Task<AuthResult> ->
             if (task.isSuccessful) {
                 //Registration OK
-                //val firebaseUser = this.firebaseAuthentication.currentUser!!
                 data.value = Resource.success(firebaseAuthentication.currentUser!!)
             } else {
                 //Registration error
@@ -50,7 +48,6 @@ class FirebaseAuthService @Inject constructor() {
     }
 
     fun firebaseAuthWithGoogle(acct: GoogleSignInAccount): MutableLiveData<Resource<FirebaseUser>> {
-        // Log.d(TAG, "firebaseAuthWithGoogle:" + acct.id!!)
         val data = MutableLiveData<Resource<FirebaseUser>>()
         data.value = Resource.loading()
 
@@ -66,7 +63,41 @@ class FirebaseAuthService @Inject constructor() {
         return data
     }
 
-    fun checkIfUserIsLogIn(): LiveData<Resource<Boolean>> {
+    fun firebaseAuthWithFacebook(token: AccessToken): MutableLiveData<Resource<FirebaseUser>> {
+        val data = MutableLiveData<Resource<FirebaseUser>>()
+        data.value = Resource.loading()
+        val credential = FacebookAuthProvider.getCredential(token.token)
+        firebaseAuthentication.signInWithCredential(credential)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        data.value = Resource.success(firebaseAuthentication.currentUser!!)
+                    } else {
+                        data.value = Resource.error(0, "sucedio un error", null)
+                    }
+                }
+
+        return data
+    }
+
+    fun firebaseAuthWithTwitter(session: TwitterSession): MutableLiveData<Resource<FirebaseUser>> {
+        val data = MutableLiveData<Resource<FirebaseUser>>()
+        data.value = Resource.loading()
+        val credential = TwitterAuthProvider.getCredential(
+                session.authToken.token,
+                session.authToken.secret)
+        firebaseAuthentication.signInWithCredential(credential)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        data.value = Resource.success(firebaseAuthentication.currentUser!!)
+                    } else {
+                        data.value = Resource.error(0, "sucedio un error", null)
+                    }
+                }
+
+        return data
+    }
+
+    fun checkIfUserIsLogIn(): MutableLiveData<Resource<Boolean>> {
 
         val data = MutableLiveData<Resource<Boolean>>()
         firebaseAuthentication.addAuthStateListener {
@@ -79,7 +110,7 @@ class FirebaseAuthService @Inject constructor() {
         return data
     }
 
-    fun logoutFirebase(): LiveData<Resource<Boolean>> {
+    fun logoutFirebase(): MutableLiveData<Resource<Boolean>> {
         val data = MutableLiveData<Resource<Boolean>>()
         firebaseAuthentication.signOut()
         data.value = Resource.success(true)

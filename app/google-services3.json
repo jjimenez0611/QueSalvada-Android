@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "706617668715",
+    "firebase_url": "https://quesalvada-91297.firebaseio.com",
+    "project_id": "quesalvada-91297",
+    "storage_bucket": "quesalvada-91297.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:706617668715:android:ade0edd93e9eb804",
+        "android_client_info": {
+          "package_name": "com.soin.quesalvada"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "706617668715-okls9sglk312qcftjsdakv35ts6pftf5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.soin.quesalvada",
+            "certificate_hash": "26e9c40d858198344f21cd531c1600ecc46680b3"
+          }
+        },
+        {
+          "client_id": "706617668715-6c32lpe3bhbi5fn11sot7lgi6m4u17k2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDr8D-EUcbOehh2Th67dCzDDZQxMpN2__4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "706617668715-6c32lpe3bhbi5fn11sot7lgi6m4u17k2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "706617668715-1b8rito8nakalccsoiv48agsnf5ddsmd.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.soin.QueSalvada"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -6,4 +6,6 @@
 
     <string name="facebook_app_id">197842191124769</string>
     <string name="fb_login_protocol_scheme">fb197842191124769</string>
+    <string name="CONSUMER_KEY" translatable="false">ZPW83DFEVEft48yPuRlwcNzMx</string>
+    <string name="CONSUMER_SECRET" translatable="false">Rm0EeVnddBYDuA8XivCTLJo0SXuNITECCJ4Dopzwm79KQIbEBG</string>
 </resources>

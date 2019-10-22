@@ -18,6 +18,26 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    signingConfigs {
+
+        debug {
+            storeFile file("debug.keystore")
+        }
+
+       /* release {
+            storeFile file("loyaltykeystore.jks")
+            storePassword "asp128"
+            keyAlias "loyalty"
+            keyPassword "asp128"
+        }*/
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -43,6 +63,11 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:16.0.5'
     implementation 'com.google.firebase:firebase-auth:16.0.5'
     implementation 'com.google.android.gms:play-services-auth:16.0.1'
+
+    implementation('com.twitter.sdk.android:twitter:3.3.0@aar') {
+
+        transitive = true
+    }
 
     //Dagger 2 Injection
 
